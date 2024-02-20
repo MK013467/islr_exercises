@@ -1,0 +1,2 @@
+load("/Users/minsokkwon/Downloads/ISLR2/data/NYSE.rda")
+load("/Users/minsokkwon/Downloads/ISLR2/data/Auto.rda")

@@ -1,0 +1,190 @@
+---
+title: "ISLR Ch2"
+output: html_document
+---
+
+## Ch2 Exercises
+
+Q1.
+
+(a) Flexible method is more efficient. We have sufficiently large amount of data compared to the predictors.
+
+
+(b) Inflexible method is recommended. The situation is exact opposite of (a) 
+
+(c) Flexible method performs better. Generally in highly non linear model we need more parameters to have better estimate.
+
+(d) Flexible method generally has high variance thus inflexible model is preferred.
+
+Q2.
+
+(a) Salary is a quantitive data, thus it is a regression problem.
+
+(b) Estimating success or failure is a binary-classification problem.
+
+(c) %change is a quantitive data, thus it is a regression problem.
+
+Q3.
+
+
+Q4.
+
+(a) Classification problem: Determine malignancy of a tumor.
+
+(b) Regression problem:Estimate person's income 
+
+(c) Given customer’s information and their spending, categorize customers related with their a spending pattern
+
+
+Q5. Flexible model requires larger dataset if we have huge dataset than we can have more accurate model using flexible approach. In contrast, if the dataset is limited than inflexible model would be preferred.
+
+Q6. In parametric approach, we assume a particular subset of observable(X) is related with y. Since we reduce the dimensionality of X by picking only certain set of observable, we generally need less amounts of data. Also, we less overfit the data than non-parametric approach. However, if estimated form of function is very different of true function “f”, our model will perform poorly.
+
+Q7.
+(a)Obs1:9 , Obs2:4, Obs3:10, Obs4:5 Obs5:2, Obs6:3
+(b)"Green". From above analysis we can see that observation 5 is the closest neighbor to the point, so we will take y value of obsevation 5 which is "Green".
+(c)"Red". For K=3, we take Observations 2,5,6. This sets has 2 "Red" and 1 "Green", by majority voting principle we take "Red".
+(d)When Bayes boundary is non-linear like, small value of k results in better prediction.
+reason: Higher k has more clear-cut boundaries which is linear-like.
+
+
+### With R
+
+Q8.
+(a)
+```{r}
+load(file = "data/College.rda")
+attach(College)
+```
+(b)
+```{r}
+head(College)
+```
+(c)
+```{r}
+# (i)
+# summary(College)
+# (ii)
+# pairs(College[,1:10])
+# (iii)
+length(College$Outstate)
+length(College$Private)
+boxplot(Outstate~Private , College, xlab = "OutState", ylab = "Private")
+# (iv)
+Elite <-rep("No", nrow(College))
+Elite[College$Top10perc > 50] <- "Yes"
+Elite <- as.factor(Elite)
+College <- data.frame(College, Elite)
+summary(College$Elite)
+boxplot(Outstate~Elite, College)
+# (v)
+par(mfrow=c(2,2))
+hist(College$Apps)
+hist(College$Accept)
+hist(College$F.Undergrad)
+hist(College$Room.Board)
+# (vi)
+```
+Q9.
+
+(a)
+```{r}
+load(file = "data/Auto.rda")
+attach(Auto)
+unique(cylinders)
+unique(origin)
+head(Auto)
+```
+quantative: mpg, cylinders, displacement, horsepower, weight, acceleration, year
+qualative: origin, name
+(b)
+```{r}
+quantative <- c("mpg", "cylinders", "displacement", "horsepower", "weight", "acceleration", "year")
+qualative <- c("origin", "name")
+apply(Auto[, quantative],2,range)
+```
+
+
+
+(c)
+```{r}
+print("MEAN")
+apply(Auto[,quantative],2,mean)
+print("STD")
+apply(Auto[,quantative],2,sd)
+```
+(d)
+```{r}
+new_Auto = Auto[-(10:85),]
+summary(new_Auto[,quantative])
+```
+(e)
+```{r}
+library(ggplot2)
+ggplot(data = Auto, aes(x = displacement, y = mpg)) +
+  geom_point() +
+  geom_smooth(method = "lm", col = "blue") +
+  labs(title = "MPG vs. Displacement", x = "Displacement", y = "MPG")
+
+ggplot(data = Auto, aes(x = weight , y = mpg)) +
+  geom_point() +
+  geom_smooth(method = "lm", col = "blue") +
+  labs(title = "MPG vs. weight", x = "weight", y = "MPG")
+```
+(f)
+As we can see from above graphs "mpg" are inversely proportional to "Displacement" and "weight".
+
+Q10
+(a)
+```{r}
+library(ISLR2)
+?Boston
+```
+(b)
+```{r}
+library(ggplot2)
+ggplot(Boston, aes( x = medv, y = crim)) + geom_point()
+ggplot(Boston, aes(x = tax, y = crim)) + geom_point()
+```
+We can see high property tax and low medv result in high per capita crime rate.
+
+(c)
+```{r}
+cor(crim, tax)
+cor(crim,nox)
+```
+(d)
+```{r}
+attach(Boston)
+hist(tax, breaks = range(tax))
+```
+
+(e)
+```{r}
+print('num of Bound in Charles river')
+sum(chas==1)
+```
+
+(f)
+```{r}
+print("Median Pupil to teacher ratio")
+median(ptratio)
+```
+
+(g)
+```{r}
+min_index <- which.min(medv)
+Boston[min_index,]
+apply(Boston, 2 , range)
+
+# This suburbs show relativly low crime rate
+```
+(h)
+```{r}
+dim(subset(Boston,rm>7))[1]
+```
+
+```{r}
+dim(subset(Boston,rm>8))[1]
+summary((subset(Boston, rm>8 [1])))
+```

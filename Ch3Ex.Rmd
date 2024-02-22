@@ -1,0 +1,78 @@
+---
+title: "Ch3Exercises"
+output: html_document
+date: "2024-02-22"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Ch3 Exercises
+
+## Conceptual
+
+Q1. 
+Null hypothesis: Budgets on tv, radio and newspaper has no relationship with total sales. In table 3.4, we can see p-value for tv and radio is extremely small but not newspaper. So we can conclude each advertisement spending on tv and radio has a relationship with total sales while one with newspaper does not.
+
+Q2.
+KNN-Classifier model: For certain point x0 in parameter space we take K-closest neighbors of x0 and assign values to x0 according to majority voting principles.
+
+KNN-Regression model:It is exactly same with KNN-Classifier model except, we assign value to x0 by taking average of K-closest neighbors.
+
+Q3.
+Starting Salary:50+20*GPA + 0.07*IQ + 35*EDUCATION_LEVEL + 0.01*(GPA*IQ) + (-10)*(GPA*EDUCADTION_LEVEL)
+(a) True:(ii)
+Reasoning
+(ii):B3 = 35 thus bachelor diploma has a positive relationship with a salary.
+For (iii),(iv) we can not conclude because we can not deduce interaction of GPA and education level solely from GPA.
+
+(b)Starting Salary: 50+20*4.0+0.07*110+35+0.01(4.0*110)+(-10)*4.0=$137,000
+
+(c)False, if the true function that describes the salary is not linear then the true inetraction impact of GPA/IQ surrogated by GPA or IQ term.
+
+Q4.
+(a) Cubic regression woudl have same or smaller RSS.
+Adding additional parameter does not increase RSS. If linear regerssion reduces all reducible error then, RSS would be the same for both regression models.
+(b)
+Linear regression would have smaller RSS. Because, the true model is linear it would perform better than cubic model on test dataset
+(c)By same argument from (a) cubic regression would have smaller RSS.
+(d)Cubic model would have smaller RSS because the true model is not linear.
+
+Q5.
+$$\hat{y_i}=x_i\hat{\beta}=x_i\frac{\sum_{j=1}^{n} x_jy_j}{\sum_{k=1}^nx_k^2}=\sum_{j=1}^na_jy_j$$
+So $a_j= \frac{x_ix_j}{\sum_{k=1}^nx_k^2}$
+
+Q6.
+
+From eq(3.4):
+
+
+Q6.
+Eq(3.4):
+$$
+\hat{\beta_1} = \sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})\\
+\hat{\beta_0} = \bar{y} - \hat{\beta_1}\bar{x}
+$$
+
+
+
+For least square line in simple linear regression:
+
+$y=\beta_1x +\beta_0$,
+putting $\bar{x}$  to the equation gives $y=\beta_1\bar{x}+\bar{y}-\beta_1x=\bar{y}$
+
+Thus the least square line always passes through the point $(\bar{x},\bar{y})$.
+
+Q7.
+
+In the simple linear regression model
+For the simplicity of calculation first compute RSS.
+RSS=$\sum(y_i - \hat{y_i})=\sum(y_i - \beta_1x-\beta_0)=$
+$$R^2=1-\frac{RSS}{TSS}=1-\frac{\sum(y_i - \hat{y_i})^2}{\sum(y_i-\bar{y})^2}=1-\frac{\sum(y_i - \beta_1x-\beta_0)^2}{\sum(y_i-\bar{y})^2}$$
+
+
+
+
+
+

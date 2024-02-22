@@ -1,0 +1,13 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+?Boston
+x=1
+y=2
+print(x)
+```
+
+

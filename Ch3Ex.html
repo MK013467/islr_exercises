@@ -389,8 +389,8 @@ model is linear it would perform better than cubic model on test dataset
 (c)By same argument from (a) cubic regression would have smaller RSS.
 (d)Cubic model would have smaller RSS because the true model is not
 linear.</p>
-<p>Q5. <span class="math inline">\(\hat{y^i}=x_i\hat{beta}=x_i\sum{
-x_jy_j}{j=1}\)</span></p>
+<p>Q5. <span class="math display">\[\hat{y_i}=x_i\hat{\beta}=x_i\frac{\sum_{j=1}^{n}
+x_jy_j}{\sum_{k=1}^nx_k^2}=\sum_{j=1}^na_jy_j\]</span> So <span class="math inline">\(a_j= \frac{x_ix_j}{\sum_{k=1}^nx_k^2}\)</span></p>
 <p>Q6.</p>
 <p>From eq(3.4):</p>
 <p>Q6. Eq(3.4): <span class="math display">\[
@@ -407,6 +407,9 @@ calculation first compute RSS. RSS=<span class="math inline">\(\sum(y_i
 - \hat{y_i})=\sum(y_i - \beta_1x-\beta_0)=\)</span> <span class="math display">\[R^2=1-\frac{RSS}{TSS}=1-\frac{\sum(y_i -
 \hat{y_i})^2}{\sum(y_i-\bar{y})^2}=1-\frac{\sum(y_i -
 \beta_1x-\beta_0)^2}{\sum(y_i-\bar{y})^2}\]</span></p>
+<p>Q8.</p>
+<pre class="r"><code>print(&quot;hi&quot;)</code></pre>
+<pre><code>## [1] &quot;hi&quot;</code></pre>
 </div>
 </div>
 

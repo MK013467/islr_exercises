@@ -72,7 +72,10 @@ RSS=$\sum(y_i - \hat{y_i})=\sum(y_i - \beta_1x-\beta_0)=$
 $$R^2=1-\frac{RSS}{TSS}=1-\frac{\sum(y_i - \hat{y_i})^2}{\sum(y_i-\bar{y})^2}=1-\frac{\sum(y_i - \beta_1x-\beta_0)^2}{\sum(y_i-\bar{y})^2}$$
 
 
-
+Q8.
+```{r}
+print("hi")
+```
 
 
 
